@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Hello World111!</title>
+  <script src="./event.js"></script>
+</head>
+
+<body>
+  <h1>Hello World!</h1>
+  We are using Node.js <span id="node-version"></span>,
+  Chromium <span id="chrome-version"></span>,
+  and Electron <span id="electron-version"></span>.
+  <div id="main-wrap"></div>
+  <button onclick="onClick()">点我</button>
+  <img src="./images/01_3gp.png" alt="">
+  <h2>视频图标</h2>
+  <br>
+  <h4>人民教育出版社</h4>
+  <br>
+  原价：<strike>99</strike>
+  <br>
+  现价：33
+
+  <br>
+  <button onclick="getSizePosition()">获取窗口尺寸和位置</button>
+  <br>
+  <button onclick="setSizePosition()">设置窗口尺寸和位置</button>
+  <script src="./renderer.js"></script>
+</body>
+<script>
+  function onClick() {
+    alert('hello')
+  }
+</script>
+
+</html>
