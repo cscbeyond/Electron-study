@@ -7,47 +7,26 @@ const {
   app,
   BrowserWindow
 } = require('electron')
-const path = require('path')
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
-let mainWindow
+let mainWindow;
+
+
+/**
+ * 如果窗口处于全屏，并且锁定状态， 在mac中，唯一退出窗口的方式 < command + q >
+ * win下，方式很多， ctrl + w 等等 
+ * 如果在mac下，使用setKiosk方法切换窗口的锁定模式，不能将fullscreen属性设置为true
+ */
 
 function createWindow() {
-  // Create the browser window.
-  /**
-   *  窗口的尺寸和位置
-   * width：  窗口宽度
-   * height： 窗口高度
-   * minWidth:窗口允许的最小宽度
-   * minHieght：窗口允许的最小高度
-   * maxWidth:窗口允许的最大宽度
-   * maxHieght：窗口允许的最大高度
-   * x:指定窗口横坐标
-   * y:指定窗口纵坐标
-   * */
-
   mainWindow = new BrowserWindow({
-    width: 800,
-    height: 600,
-    // minHieght: 200,
-    // minWidth: 200,
-    // maxHeight: 1000,
-    // maxWidth: 1000,
-    x: 10,
-    y: 10,
-    fullscreenable: false,
+    fullscreen: true,
+    kiosk: true,
     webPreferences: {
-      preload: path.join(__dirname, 'preload.js'),
       nodeIntegration: true
     }
   })
-
-  mainWindow.isFullScreen
-/**
- * mainWindow.setFullScreen(true); // 通过api的方式设置全屏  而不是配置
- * mainWindow.isFullScreen() 方法可以获取窗口是否为全屏状态
- */
 
   // and load the index.html of the app.
   mainWindow.loadFile('index.html')

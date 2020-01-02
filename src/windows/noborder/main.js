@@ -14,53 +14,33 @@ const path = require('path')
 let mainWindow
 
 function createWindow() {
-  // Create the browser window.
-  /**
-   *  窗口的尺寸和位置
-   * width：  窗口宽度
-   * height： 窗口高度
-   * minWidth:窗口允许的最小宽度
-   * minHieght：窗口允许的最小高度
-   * maxWidth:窗口允许的最大宽度
-   * maxHieght：窗口允许的最大高度
-   * x:指定窗口横坐标
-   * y:指定窗口纵坐标
-   * */
 
+  // mainWindow = new BrowserWindow({
+  //   width: 800,
+  //   height: 600,
+  //   x: 800,
+  //   y: 300,
+  //   fullscreenable: false,
+  //   webPreferences: {
+  //     preload: path.join(__dirname, 'preload.js'),
+  //     nodeIntegration: true
+  //   }
+  // })
   mainWindow = new BrowserWindow({
-    width: 800,
-    height: 600,
-    // minHieght: 200,
-    // minWidth: 200,
-    // maxHeight: 1000,
-    // maxWidth: 1000,
-    x: 10,
-    y: 10,
-    fullscreenable: false,
-    webPreferences: {
-      preload: path.join(__dirname, 'preload.js'),
-      nodeIntegration: true
-    }
+    frame: false, // 隐藏程序的边框
+    transparent: true, // 窗体透明
   })
 
   mainWindow.isFullScreen
-/**
- * mainWindow.setFullScreen(true); // 通过api的方式设置全屏  而不是配置
- * mainWindow.isFullScreen() 方法可以获取窗口是否为全屏状态
- */
-
   // and load the index.html of the app.
   mainWindow.loadFile('index.html')
 
   //打开开发者工具
-  mainWindow.webContents.openDevTools()
+  // mainWindow.webContents.openDevTools()
 
   // Emitted when the window is closed.
   mainWindow.on('closed', () => {
     console.log('closed')
-    // Dereference the window object, usually you would store windows
-    // in an array if your app supports multi windows, this is the time
-    // when you should delete the corresponding element.
     mainWindow = null
   })
 }
